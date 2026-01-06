@@ -140,9 +140,6 @@ def lihat_jadwal():
     else:
         st.warning("Tidak ada jadwal untuk hari ini.")
 
-import streamlit as st
-import os
-
 def halaman_penambahan_jadwal_lab():
     st.title("🔐 Penambahan Jadwal Laboratorium")
 
@@ -152,6 +149,39 @@ def halaman_penambahan_jadwal_lab():
     # 2. LOGIKA PEMBUATAN FOLDER (Sangat Penting)
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
+
+def fitur_upload_file():
+    st.subheader("📤 Upload File Jadwal Laboratorium")
+
+    # 1. Tentukan nama folder penyimpanan
+    UPLOAD_FOLDER = "upload_jadwal"
+
+    # 2. Logika pembuatan folder otomatis
+    # Mengecek apakah folder sudah ada, jika belum maka dibuatkan
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
+        st.info(f"Folder '{UPLOAD_FOLDER}' berhasil dibuat otomatis.")
+
+    # 3. Widget Upload File
+    uploaded_file = st.file_uploader(
+        "Pilih file (PDF / Excel / Word)", 
+        type=["pdf", "xlsx", "xls", "docx"]
+    )
+
+    # 4. Logika penyimpanan file
+    if uploaded_file is not None:
+        # Membuat jalur lengkap penyimpanan (folder + nama file)
+        file_path = os.path.join(UPLOAD_FOLDER, uploaded_file.name)
+        
+        # Menulis data file ke dalam folder tujuan
+        with open(file_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        
+        st.success(f"✅ Berhasil! File '{uploaded_file.name}' tersimpan di folder '{UPLOAD_FOLDER}'")
+
+# Cara menjalankan fungsi di aplikasi utama
+if __name__ == "__main__":
+    fitur_upload_file()
 
     # --- Bagian Login Dosen ---
     if not st.session_state.login:
