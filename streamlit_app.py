@@ -4,10 +4,6 @@ import pandas as pd
 import datetime
 import os
 st.set_page_config(page_title="AKA-LABBROWS", layout="wide", page_icon="🔬")
-# Fungsi Animasi Lottie
-def load_lottieurl(url):
-    r = requests.get(url)
-    return r.json() if r.status_code == 200 else None
     
 st.markdown("""
     <style>
@@ -72,6 +68,11 @@ st.markdown("""
 # 1. CONFIG & INITIAL STATE (Hanya boleh 1 kali di paling atas)
 # ===============================
 st.set_page_config(page_title="Sistem Informasi Laboratorium", layout="wide", page_icon="🔬")
+
+# Fungsi Animasi Lottie
+def load_lottieurl(url):
+    r = requests.get(url)
+    return r.json() if r.status_code == 200 else None
 
 if "lab_terpilih" not in st.session_state:
     st.session_state.lab_terpilih = None
