@@ -178,7 +178,9 @@ else:
         st.title("Projek Logika Dan Pemrograman Komputer")
         st.write("Kelompok 4.")
         st.write("Selamat datang! Silakan pilih gedung untuk melihat informasi laboratorium atau gunakan menu peminjaman untuk mengajukan izin.")
-        st.image("https://qubisastorage.blob.core.windows.net/files/microlearnings/2554/images/img480/2554-20210702124412375.jpg", use_container_width=True)
+        video_file = open("https://youtu.be/F-j-BGyRNKo", "rb")
+        video_bytes = video_file.read()
+        st.video(video_bytes)
     elif menu == "Jadwal Lab":
         lihat_jadwal()
     elif menu == "Form Pinjam Lab":
