@@ -1,13 +1,12 @@
-
 import streamlit as st
 import pandas as pd
 import datetime
 import os
+
 st.set_page_config(page_title="AKA-LABBROWS", layout="wide", page_icon="🔬")
 
 st.markdown("""
     <style>
-    /* 1. Background Gradien 4 Warna Bergerak */
     .stApp {
         background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #f1c40f);
         background-size: 400% 400%;
@@ -21,29 +20,16 @@ st.markdown("""
         100% { background-position: 0% 50%; }
     }
 
-    /* 2. Mengubah Sidebar Jadi Transparan (Glassmorphism) */
     [data-testid="stSidebar"] {
         background: rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(15px);
         border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* 3. Menyesuaikan teks di Sidebar agar putih & bersih */
     [data-testid="stSidebar"] * {
         color: white !important;
     }
 
-    /* 4. Efek Kaca pada Kontainer/Card */
-    .st-emotion-cache-1kyx9g7 {
-        background: rgba(255, 255, 255, 0.15) !important;
-        backdrop-filter: blur(10px) !important;
-        border-radius: 20px !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        padding: 25px !important;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
-    }
-
-    /* 5. Mempercantik Tombol (Hover Effect) */
     .stButton>button {
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.2);
@@ -57,29 +43,18 @@ st.markdown("""
         transform: scale(1.05);
     }
 
-    /* Judul Utama */
-    h1 {
+    h1, h2, h3, p {
+        color: white !important;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        font-weight: 800 !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# 1. CONFIG & INITIAL STATE 
-st.set_page_config(page_title="Sistem Informasi Laboratorium", layout="wide", page_icon="🔬")
-
 if "lab_terpilih" not in st.session_state:
     st.session_state.lab_terpilih = None
 
-if "login" not in st.session_state:
-    st.session_state.login = False
-    st.session_state.nama = ""
-
 def reset_lab():
     st.session_state.lab_terpilih = None
-
-
-# DATABASE 
 
 DATABASE_LAB = {
     "Lab Organik": {
@@ -140,8 +115,6 @@ DATABASE_LAB = {
     }
 }
 
-
-# TAMPILAN
 def halaman_detail_lab(nama_lab):
     data = DATABASE_LAB[nama_lab]
     st.button("⬅ Kembali ke Menu Utama", on_click=reset_lab)
@@ -163,11 +136,11 @@ def halaman_detail_lab(nama_lab):
 
 def tampilkan_gedung(nama_gedung):
     st.header(f"🏢 {nama_gedung}")
-   fotos = {
-        "Gedung D": "https://via.placeholder.com/800x300.png?text=VISUALISASI+GEDUNG+D",
-        "Gedung E": "https://via.placeholder.com/800x300.png?text=VISUALISASI+GEDUNG+E",
-        "Gedung F": "https://via.placeholder.com/800x300.png?text=VISUALISASI+GEDUNG+F",
-        "Gedung G": "https://via.placeholder.com/800x300.png?text=VISUALISASI+GEDUNG+G"
+    fotos = {
+        "Gedung D": "https://via.placeholder.com/800x300.png?text=GEDUNG+D",
+        "Gedung E": "https://via.placeholder.com/800x300.png?text=GEDUNG+E",
+        "Gedung F": "https://via.placeholder.com/800x300.png?text=GEDUNG+F",
+        "Gedung G": "https://via.placeholder.com/800x300.png?text=GEDUNG+G"
     }
     st.image(fotos.get(nama_gedung, "https://via.placeholder.com/800x300"), caption=f"Area {nama_gedung}")
     st.divider()
@@ -192,13 +165,8 @@ def lihat_jadwal():
     else:
         st.warning("Tidak ada jadwal untuk hari ini.")
 
-
-
-
-# sidebar 
 with st.sidebar:
-     st.image("url vidio", width=70)
-       st.title("🔬 Lab-Info System")
+    st.title("🔬 Lab-Info System")
     st.write("---")
     menu = st.radio(
         "Navigasi Utama", 
@@ -206,20 +174,17 @@ with st.sidebar:
         on_change=reset_lab
     )
 
-# home
 if st.session_state.lab_terpilih:
     halaman_detail_lab(st.session_state.lab_terpilih)
 else:
     if menu == "Beranda":
-        st.title("welcome To AKA-LABBROWS")
+        st.title("Welcome To AKA-LABBROWS")
         st.write("**Projek Logika Dan Pemrograman Komputer - Kelompok 4**")
         st.write("Tempat khusus untuk kamu yang ingin meminjam lab di Politeknik AKA Bogor.")
-        st.video("https://youtu.be/F-j-BGyRNKo")
+        st.video("https://www.youtube.com/watch?v=F-j-BGyRNKo")
         st.write("Politeknik AKA Bogor didirikan pada tahun 1959 dan merupakan perguruan tinggi di lingkungan Kementerian Perindustrian. Terdapat beberapa laboratorium yang terdapat di Politeknik AKA Bogor, antara lain, Gedung D (Lab Organik, Lab Analisis, Lab Lingkungan), Gedung E (Lab Instrumen, Lab Mikro), Gedung F (Lab Fisika), Gedung G (Lab Teknologi).")
         st.balloons()
     elif menu == "Jadwal Lab":
         lihat_jadwal()
-    elif menu == "Penambahan Jadwal Laboratorium":
-        halaman_penambahan_jadwal_lab()
     else:
         tampilkan_gedung(menu)
