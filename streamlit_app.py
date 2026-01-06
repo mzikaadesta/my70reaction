@@ -56,7 +56,6 @@ st.markdown("""
         color: #e73c7e !important;
         transform: scale(1.05);
     }
-
     /* Judul Utama */
     h1 {
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -69,7 +68,6 @@ st.markdown("""
 # ===============================
 st.set_page_config(page_title="Sistem Informasi Laboratorium", layout="wide", page_icon="🔬")
 
-# Fungsi Animasi Lottie
 def load_lottieurl(url):
     r = requests.get(url)
     return r.json() if r.status_code == 200 else None
