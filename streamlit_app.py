@@ -3,27 +3,64 @@ import streamlit as st
 import pandas as pd
 import datetime
 import os
+st.set_page_config(page_title="AKA-LABBROWS", layout="wide", page_icon="🔬")
+
 st.markdown("""
     <style>
-    /* Background Gradien Bergerak */
+    /* 1. Background Gradien 4 Warna Bergerak */
     .stApp {
-        background: linear-gradient(-45deg, #FF8C00, #FF4500, #ed1c24, #f7941d);
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #f1c40f);
         background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
+        animation: gradient 10s ease infinite;
+        color: white;
     }
+
     @keyframes gradient {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
     }
 
-    /* Kartu Efek Kaca (Glassmorphism) */
+    /* 2. Mengubah Sidebar Jadi Transparan (Glassmorphism) */
+    [data-testid="stSidebar"] {
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(15px);
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* 3. Menyesuaikan teks di Sidebar agar putih & bersih */
+    [data-testid="stSidebar"] * {
+        color: white !important;
+    }
+
+    /* 4. Efek Kaca pada Kontainer/Card */
     .st-emotion-cache-1kyx9g7 {
         background: rgba(255, 255, 255, 0.15) !important;
-        backdrop-filter: blur(12px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(10px) !important;
         border-radius: 20px !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        padding: 25px !important;
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* 5. Mempercantik Tombol (Hover Effect) */
+    .stButton>button {
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 1px solid white;
+        transition: 0.3s;
+    }
+    .stButton>button:hover {
+        background: white !important;
+        color: #e73c7e !important;
+        transform: scale(1.05);
+    }
+
+    /* Judul Utama */
+    h1 {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        font-weight: 800 !important;
     }
     </style>
     """, unsafe_allow_html=True)
