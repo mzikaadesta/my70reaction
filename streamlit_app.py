@@ -178,9 +178,10 @@ else:
         st.title("Projek Logika Dan Pemrograman Komputer")
         st.write("Kelompok 4.")
         st.write("Selamat datang! Silakan pilih gedung untuk melihat informasi laboratorium atau gunakan menu peminjaman untuk mengajukan izin.")
-        video_file = open("https://youtu.be/F-j-BGyRNKo", "rb")
-        video_bytes = video_file.read()
-        st.video(video_bytes)
+        # PERBAIKAN DI SINI:
+        # Langsung masukkan link YouTube ke st.video()
+        url_video = "https://youtu.be/F-j-BGyRNKo"
+        st.video(url_video)
     elif menu == "Jadwal Lab":
         lihat_jadwal()
     elif menu == "Form Pinjam Lab":
