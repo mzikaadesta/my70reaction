@@ -8,13 +8,7 @@ st.set_page_config(page_title="AKA-LABBROWS", layout="wide", page_icon="🔬")
 
 st.markdown("""
     <style>
-    /* 1. Background Gradien 4 Warna Bergerak */
-    .stApp {
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #f1c40f);
-        background-size: 400% 400%;
-        animation: gradient 10s ease infinite;
-        color: white;
-    }
+   
 
     @keyframes gradient {
         0% { background-position: 0% 50%; }
@@ -92,7 +86,7 @@ DATABASE_LAB = {
         "jadwal": {"senin": {"07.00": "1A", "10.00": "1B"}},
         "regulasi": ["1. Dresscode lab lengkap", "2. Dilarang makan/minum"],
         "dosen": [{"nama": "ayung, M.Si", "telp": "08xxx"}],
-        "link_form": "https://www.youtube.com/watch?v=muHqHqTobEQ"
+        "link_form": "https://drive.google.com/drive/folders/1O-zW3cW4B861qcAnjBu9AHNmPBPKwXJl?usp=drive_link"
     },
     "Lab Analisis": {
         "gedung": "Gedung D",
@@ -100,7 +94,7 @@ DATABASE_LAB = {
         "jadwal": {"selasa": {"07.00": "2E"}},
         "regulasi": ["1. Prosedur analisis ketat", "2. Cek alat sebelum pakai"],
         "dosen": [{"nama": "Pak Joko", "telp": "08xxx"}],
-        "link_form": "https://www.youtube.com/watch?v=muHqHqTobEQ"
+        "link_form": "https://drive.google.com/drive/folders/1O-zW3cW4B861qcAnjBu9AHNmPBPKwXJl?usp=drive_lin"
     },
     "Lab Lingkungan": {
         "gedung": "Gedung D",
@@ -108,7 +102,7 @@ DATABASE_LAB = {
         "jadwal": {"rabu": {"10.00": "2E"}},
         "regulasi": ["1. Pakai masker", "2. Buang limbah sesuai aturan"],
         "dosen": [{"nama": "Pak Purbay", "telp": "08xxx"}],
-        "link_form": "https://www.youtube.com/watch?v=muHqHqTobEQ"
+        "link_form": "https://drive.google.com/drive/folders/1O-zW3cW4B861qcAnjBu9AHNmPBPKwXJl?usp=drive_linQ"
     },
     "Lab Instrumen": {
         "gedung": "Gedung E",
@@ -116,7 +110,7 @@ DATABASE_LAB = {
         "jadwal": {"kamis": {"07.00": "1D"}},
         "regulasi": ["1. Izin laboran khusus", "2. Kalibrasi mandiri"],
         "dosen": [{"nama": "Pak DD", "telp": "08xxx"}],
-        "link_form": "https://www.youtube.com/watch?v=muHqHqTobEQ"
+        "link_form": "https://drive.google.com/drive/folders/1O-zW3cW4B861qcAnjBu9AHNmPBPKwXJl?usp=drive_lin"
     },
     "Lab mikro": {
         "gedung": "Gedung E",
@@ -124,7 +118,7 @@ DATABASE_LAB = {
         "jadwal": {"jumat": {"07.00": "1B"}},
         "regulasi": ["1. Sterilisasi alat", "2. Jas lab bersih"],
         "dosen": [{"nama": "Bu CC", "telp": "08xxx"}],
-        "link_form": "https://www.youtube.com/watch?v=muHqHqTobEQ"
+        "link_form": "https://drive.google.com/drive/folders/1O-zW3cW4B861qcAnjBu9AHNmPBPKwXJl?usp=drive_lin"
     },
     "Lab Fisika": {
         "gedung": "Gedung F",
@@ -132,7 +126,7 @@ DATABASE_LAB = {
         "jadwal": {"senin": {"14.00": "2A"}},
         "regulasi": ["1. Hati-hati arus listrik", "2. Rapikan kabel setelah pakai"],
         "dosen": [{"nama": "Mas Jaka", "telp": "08xxx"}],
-        "link_form": "https://www.youtube.com/watch?v=muHqHqTobEQ"
+        "link_form": "https://drive.google.com/drive/folders/1O-zW3cW4B861qcAnjBu9AHNmPBPKwXJl?usp=drive_lin"
     },
     "Lab Teknologi": {
         "gedung": "Gedung G",
@@ -140,7 +134,7 @@ DATABASE_LAB = {
         "jadwal": {"selasa": {"14.00": "1C"}},
         "regulasi": ["1. Safety first", "2. Sepatu tertutup"],
         "dosen": [{"nama": "agoy, M.Si", "telp": "08xxx"}],
-        "link_form": "https://www.youtube.com/watch?v=muHqHqTobEQ"
+        "link_form": "https://drive.google.com/drive/folders/1O-zW3cW4B861qcAnjBu9AHNmPBPKwXJl?usp=drive_lin"
     }
 }
 
@@ -159,7 +153,7 @@ def halaman_detail_lab(nama_lab):
         for r in data["regulasi"]:
             st.write(r)
         st.divider()
-        st.link_button("📑 Formulir Peminjaman Eksternal", data["link_form"], type="primary", use_container_width=True)
+        st.link_button(st.image("", width=70), data["link_form"], type="primary", use_container_width=True)
     with col2:
         st.subheader("👨‍🔬 Dosen & Laboran")
         for d in data["dosen"]:
