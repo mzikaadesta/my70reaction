@@ -153,7 +153,7 @@ def halaman_detail_lab(nama_lab):
         for r in data["regulasi"]:
             st.write(r)
         st.divider()
-        st.link_button(st.image("", width=70), data["link_form"], type="primary", use_container_width=True)
+        st.link_button(st.image("Gemini_Generated_Image_pewve7pewve7pewv.png", width=70), data["link_form"], type="primary", use_container_width=True)
     with col2:
         st.subheader("👨‍🔬 Dosen & Laboran")
         for d in data["dosen"]:
